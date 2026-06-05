@@ -1,0 +1,38 @@
+---
+import { auditRows } from "../content/landing";
+---
+
+<section class="audit section-shell" id="audit" aria-labelledby="audit-title">
+  <div class="section-heading-wide" data-reveal>
+    <h2 id="audit-title">Decision records make the gate inspectable.</h2>
+  </div>
+  <div class="table-wrap" data-reveal style="--reveal-delay: 0.15s">
+    <table>
+      <caption>Recent policy decisions</caption>
+      <thead>
+        <tr>
+          <th scope="col">Time</th>
+          <th scope="col">Agent</th>
+          <th scope="col">Recipient</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Decision</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Hash</th>
+        </tr>
+      </thead>
+      <tbody>
+        {auditRows.map((row) => (
+          <tr>
+            <td>{row.time}</td>
+            <td>{row.agent}</td>
+            <td>{row.recipient}</td>
+            <td>{row.amount}</td>
+            <td><span class="table-state">{row.decision}</span></td>
+            <td>{row.reason}</td>
+            <td>{row.hash}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import { site } from "../content/landing";
+---
+
+<section class="waitlist section-shell" id="waitlist" aria-labelledby="waitlist-title">
+  <div class="waitlist-copy" data-reveal>
+    <h2 id="waitlist-title">{site.waitlistCta}</h2>
+    <p>
+      Get updates as Anagate develops the pre-signing policy gateway for
+      Stellar agent payments.
+    </p>
+  </div>
+  <form class="waitlist-form" data-reveal style="--reveal-delay: 0.15s" aria-describedby="waitlist-note">
+    <label for="email">Email</label>
+    <div class="form-line">
+      <input id="email" name="email" type="email" placeholder="builder@example.com" required />
+      <button class="button" type="submit">{site.waitlistCta}</button>
+    </div>
+    <p id="waitlist-note" class="form-note" role="status">
+      No endpoint is connected yet. Submitting this form will only show a local confirmation.
+    </p>
+  </form>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>(".waitlist-form");
+  const note = document.querySelector<HTMLElement>("#waitlist-note");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const email = String(data.get("email") || "").trim();
+    if (!email) return;
+    if (!note) return;
+    note.textContent = "Thanks. No endpoint is connected yet, so this stayed in your browser.";
+    form.reset();
+  });
+</script>

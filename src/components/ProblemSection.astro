@@ -1,0 +1,18 @@
+---
+import { problems } from "../content/landing";
+---
+
+<section class="problem section-shell" aria-labelledby="problem-title">
+  <div class="section-heading" data-reveal>
+    <p class="signal">Why pre-signing matters</p>
+    <h2 id="problem-title">Payment safety has to happen before execution.</h2>
+  </div>
+  <div class="problem-list" data-reveal style="--reveal-delay: 0.15s">
+    {problems.map((item) => (
+      <article class="problem-item">
+        <h3>{item.title}</h3>
+        <p>{item.body}</p>
+      </article>
+    ))}
+  </div>
+</section>

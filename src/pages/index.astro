@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import HeroGateway from "../components/HeroGateway.astro";
+import ProblemSection from "../components/ProblemSection.astro";
+import GatewayFlow from "../components/GatewayFlow.astro";
+import PolicyInspector from "../components/PolicyInspector.astro";
+import DecisionStates from "../components/DecisionStates.astro";
+import AuditTrail from "../components/AuditTrail.astro";
+import BuilderContext from "../components/BuilderContext.astro";
+import WaitlistCTA from "../components/WaitlistCTA.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { site } from "../content/landing";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={site.description} />
+    <title>{site.name} | Pre-signing policy enforcement</title>
+    <link rel="icon" type="image/png" href="/anagate-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <SiteHeader />
+    <main>
+      <HeroGateway />
+      <ProblemSection />
+      <GatewayFlow />
+      <PolicyInspector />
+      <DecisionStates />
+      <AuditTrail />
+      <BuilderContext />
+      <WaitlistCTA />
+    </main>
+    <SiteFooter />
+
+    <script>
+      document.documentElement.classList.add('js-ready');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

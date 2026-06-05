@@ -1,0 +1,26 @@
+---
+import { builderPoints } from "../content/landing";
+
+const features = [
+  { title: "Stellar-native", desc: "Built for Stellar payment flows, including native XLM." },
+  { title: "Agent-pattern ready", desc: "Designed for x402 and MPP-style agent payment patterns." },
+  { title: "Integration surfaces", desc: "Includes a TypeScript client and a policy-aware relayer." },
+];
+---
+
+<section class="builder section-shell" aria-labelledby="builder-title">
+  <div class="builder-panel" data-reveal>
+    <div>
+      <p class="signal">Builder context</p>
+      <h2 id="builder-title">Stellar-native controls for agent payment surfaces.</h2>
+    </div>
+    <ul class="builder-features">
+      {features.map((f) => (
+        <li>
+          <strong>{f.title}</strong>
+          {f.desc}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

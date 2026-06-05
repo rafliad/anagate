@@ -1,0 +1,106 @@
+<style>
+  .ana-board { display: grid; gap: 22px; }
+  .ana-intro { max-width: 780px; }
+  .ana-intro strong { color: #101112; }
+  .ana-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; align-items: stretch; }
+  .ana-card {
+    min-height: 520px;
+    border: 1px solid #d7d9d8;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    transition: transform 180ms ease, border-color 180ms ease;
+  }
+  .ana-card:hover { transform: translateY(-3px); border-color: #0b0d0d; }
+  .ana-card.selected { outline: 3px solid #0b0d0d; outline-offset: 3px; }
+  .ana-visual { min-height: 300px; padding: 20px; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+  .ana-card h3 { margin: 0 0 8px; font-size: 1.05rem; color: #101112; }
+  .ana-card p { margin: 0; color: #4f5756; line-height: 1.5; }
+  .ana-body { padding: 18px 20px 22px; }
+  .ana-tag { display: inline-flex; width: max-content; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 9px; border: 1px solid currentColor; border-radius: 999px; }
+  .ana-a { background: #f4f7f6; color: #0a0d0d; }
+  .ana-a .gate-mark { width: 150px; aspect-ratio: 1; align-self: center; margin-top: 12px; background: #040505; clip-path: path("M 75 5 C 62 5 56 16 49 28 L 9 97 C -2 116 11 141 34 141 C 44 141 52 136 58 128 L 74 105 C 78 99 84 99 88 105 L 104 128 C 110 137 119 141 129 141 C 152 141 165 116 154 97 L 101 16 C 95 9 87 5 75 5 Z M 70 75 C 88 66 106 70 116 86 C 93 85 83 92 69 107 L 45 132 C 37 140 26 137 23 127 C 20 119 24 110 31 102 L 54 79 C 59 74 64 72 70 75 Z"); }
+  .ana-a .flow { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; font-size: 12px; color: #283130; }
+  .ana-a .node { border: 1px solid #0a0d0d; border-radius: 8px; padding: 10px; background: #fff; }
+  .ana-a .arrow { color: #00a6a6; font-weight: 800; }
+  .ana-b { background: #080909; color: #eff4ef; }
+  .ana-b .ana-tag { color: #d7ff4a; }
+  .ana-b .ledger { display: grid; gap: 8px; margin-top: 20px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+  .ana-b .row { display: grid; grid-template-columns: 76px 1fr 66px; gap: 8px; padding: 9px; border: 1px solid #2c3330; border-radius: 8px; color: #c7d0cc; }
+  .ana-b .allow { color: #d7ff4a; }
+  .ana-b .block { color: #ff6f61; }
+  .ana-b .approval { color: #80c7ff; }
+  .ana-b .trace { position: absolute; inset: auto 18px 18px; height: 84px; border: 1px solid #2c3330; border-radius: 10px; background: linear-gradient(90deg, rgba(215,255,74,.14), transparent 30%, rgba(128,199,255,.13)); }
+  .ana-c { background: #eff2f7; color: #11151a; }
+  .ana-c .window { margin-top: 18px; border: 1px solid #11151a; border-radius: 10px; background: #ffffff; overflow: hidden; }
+  .ana-c .bar { display: flex; gap: 5px; padding: 9px; border-bottom: 1px solid #d9dee8; }
+  .ana-c .dot { width: 8px; height: 8px; border-radius: 999px; background: #11151a; opacity: .35; }
+  .ana-c .dash { padding: 12px; display: grid; gap: 9px; }
+  .ana-c .decision { display: flex; justify-content: space-between; gap: 12px; padding: 10px; border-radius: 8px; background: #f2f5fa; font-size: 12px; }
+  .ana-c .pill { border-radius: 999px; padding: 2px 7px; background: #11151a; color: #fff; }
+  .ana-c .route { margin-top: 14px; height: 86px; background: linear-gradient(135deg, #11151a 0 10%, transparent 10% 45%, #00a6a6 45% 52%, transparent 52%); border: 1px solid #cfd6e2; border-radius: 10px; }
+  .ana-note { font-size: 13px; color: #5a6260; max-width: 760px; }
+</style>
+
+<div class="ana-board">
+  <div class="ana-intro">
+    <h2>Which Anagate direction feels right?</h2>
+    <p class="subtitle">All three use the same SoW story: an AI agent submits a payment intent, the Policy Gateway returns ALLOW, BLOCK, or REQUIRE_APPROVAL, and only allowed native XLM payments reach Stellar testnet.</p>
+  </div>
+
+  <div class="ana-cards">
+    <div class="ana-card" data-choice="a" onclick="toggleSelect(this)">
+      <div class="ana-visual ana-a">
+        <span class="ana-tag">A: The Gateway</span>
+        <div class="gate-mark" aria-hidden="true"></div>
+        <div class="flow">
+          <div class="node">agent intent</div>
+          <div class="arrow">passes through</div>
+          <div class="node">policy gate</div>
+        </div>
+      </div>
+      <div class="ana-body">
+        <h3>Logo-led, spatial, ownable</h3>
+        <p>The black A becomes the checkpoint between intent and execution. Best if the landing page should feel like a new category: agent payment enforcement.</p>
+      </div>
+    </div>
+
+    <div class="ana-card" data-choice="b" onclick="toggleSelect(this)">
+      <div class="ana-visual ana-b">
+        <span class="ana-tag">B: The Evidence Room</span>
+        <div class="ledger">
+          <div class="row"><span>10:24:18</span><span>allowlist matched</span><strong class="allow">ALLOW</strong></div>
+          <div class="row"><span>10:25:02</span><span>amount exceeds policy</span><strong class="block">BLOCK</strong></div>
+          <div class="row"><span>10:25:44</span><span>human review required</span><strong class="approval">APPROVAL</strong></div>
+        </div>
+        <div class="trace" aria-hidden="true"></div>
+      </div>
+      <div class="ana-body">
+        <h3>Audit-first, serious, proof-heavy</h3>
+        <p>The page behaves like a case file: decisions, reasons, hashes, evidence. Strong for grant evaluators who need to verify the scope quickly.</p>
+      </div>
+    </div>
+
+    <div class="ana-card" data-choice="c" onclick="toggleSelect(this)">
+      <div class="ana-visual ana-c">
+        <span class="ana-tag">C: The Testnet Console</span>
+        <div class="window">
+          <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+          <div class="dash">
+            <div class="decision"><span>recipient: GD7F...K2</span><strong class="pill">ALLOW</strong></div>
+            <div class="decision"><span>amount: 48 XLM</span><strong class="pill">CAP OK</strong></div>
+            <div class="decision"><span>relayer</span><strong class="pill">SIGNED</strong></div>
+          </div>
+        </div>
+        <div class="route" aria-hidden="true"></div>
+      </div>
+      <div class="ana-body">
+        <h3>Product-demo, crisp, Vercel-ready</h3>
+        <p>Hero centers the working PoC: API decision, relayer result, dashboard proof. Best if the page should sell execution progress more than category drama.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="ana-note">Click a direction if one feels closest. You can also just tell me in chat what to borrow or reject.</p>
+</div>

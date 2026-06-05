@@ -1,0 +1,33 @@
+---
+import { hero } from "../content/landing";
+---
+
+<section class="hero section-shell" id="top" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="signal">Gateway Console</p>
+    <h1 id="hero-title">{hero.title}</h1>
+    <p class="hero-lede">{hero.copy}</p>
+    <div class="hero-actions" aria-label="Hero actions">
+      <a class="button" href="#waitlist">{hero.primaryCta}</a>
+      <a class="button button-secondary" href="#flow">{hero.secondaryCta}</a>
+    </div>
+  </div>
+
+  <div class="gateway-visual" aria-label="Gateway from agent intent to signed payment">
+    <div class="intent-node">
+      <span>{hero.chips[0]}</span>
+      <strong>Payment intent</strong>
+      <small>recipient, amount, reason</small>
+    </div>
+    <div class="gate-panel">
+      <span>{hero.chips[1]}</span>
+      <img src="/anagate-logo.png" alt="Anagate spatial gate mark" width="220" height="220" />
+      <strong>ALLOW / BLOCK / REQUIRE_APPROVAL</strong>
+    </div>
+    <div class="payment-node">
+      <span>{hero.chips[2]}</span>
+      <strong>Stellar payment</strong>
+      <small>signed by relayer</small>
+    </div>
+  </div>
+</section>

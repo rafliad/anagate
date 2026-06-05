@@ -1,0 +1,18 @@
+---
+import { flowSteps } from "../content/landing";
+---
+
+<section class="flow section-shell" id="flow" aria-labelledby="flow-title">
+  <div class="section-heading-wide" data-reveal>
+    <h2 id="flow-title">Intent becomes a signature only after policy passes.</h2>
+  </div>
+  <ol class="flow-steps" data-reveal style="--reveal-delay: 0.15s">
+    {flowSteps.map((step) => (
+      <li>
+        <span>{step.label}</span>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+      </li>
+    ))}
+  </ol>
+</section>

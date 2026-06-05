@@ -1,0 +1,14 @@
+---
+import { navItems, site } from "../content/landing";
+---
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="Anagate home">
+    <img src="/anagate-logo.png" alt="" width="40" height="40" />
+    <span>{site.name}</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+  <a class="button button-small" href="#waitlist">{site.waitlistCta}</a>
+</header>

@@ -176,8 +176,11 @@ input {
 
 .signal {
   margin: 0 0 14px;
-  color: var(--accent-dark);
-  font-weight: 820;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 h1,
@@ -288,6 +291,9 @@ h3 {
 
 .gate-panel img {
   width: min(220px, 100%);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
   border-radius: 0;
 }
 
@@ -542,7 +548,7 @@ th {
 }
 
 .builder-panel .signal {
-  color: oklch(0.78 0.06 245);
+  color: oklch(0.7 0.04 245);
 }
 
 .builder-features {

@@ -18,5 +18,3 @@ Use the default static Astro setup.
 - Build command: `npm run build`
 - Output directory: `dist`
 - Framework preset: Astro
-
-The build runs `astro check`, emits the static site, and then verifies required public copy in `dist`.

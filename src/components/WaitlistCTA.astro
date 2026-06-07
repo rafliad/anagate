@@ -17,7 +17,7 @@ import { site } from "../content/landing";
       <button class="button" type="submit">{site.waitlistCta}</button>
     </div>
     <p id="waitlist-note" class="form-note" role="status">
-      No endpoint is connected yet. Submitting this form will only show a local confirmation.
+      The public endpoint is not connected yet. Submitting this form confirms locally for now.
     </p>
   </form>
 </section>
@@ -32,7 +32,7 @@ import { site } from "../content/landing";
     const email = String(data.get("email") || "").trim();
     if (!email) return;
     if (!note) return;
-    note.textContent = "Thanks. No endpoint is connected yet, so this stayed in your browser.";
+    note.textContent = "Thanks. This confirmation stayed in your browser while the waitlist endpoint is being connected.";
     form.reset();
   });
 </script>

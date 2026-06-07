@@ -29,8 +29,8 @@ html {
 body {
   margin: 0;
   background:
-    linear-gradient(90deg, oklch(0.94 0.014 255 / 0.5) 1px, transparent 1px),
-    linear-gradient(180deg, oklch(0.94 0.014 255 / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.94 0.014 255 / 0.45) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.94 0.014 255 / 0.45) 1px, transparent 1px),
     var(--bg);
   background-size: 44px 44px;
   color: var(--ink);
@@ -118,6 +118,16 @@ input {
   padding: 8px 0;
 }
 
+.nav-links a,
+.site-footer nav a {
+  transition: color 160ms ease;
+}
+
+.nav-links a:hover,
+.site-footer nav a:hover {
+  color: var(--ink);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -141,6 +151,10 @@ input {
   border-color: var(--accent-dark);
 }
 
+.button:active {
+  transform: translateY(0);
+}
+
 .button-secondary {
   background: transparent;
   color: var(--ink);
@@ -157,6 +171,7 @@ input {
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
   align-items: center;
@@ -181,6 +196,13 @@ input {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.section-copy {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.5vw, 1.14rem);
 }
 
 h1,
@@ -301,6 +323,7 @@ h3 {
   font-size: 0.9rem;
 }
 
+
 .problem,
 .flow,
 .policy,
@@ -322,14 +345,12 @@ h3 {
 .problem-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: clamp(24px, 5vw, 58px);
+  border-top: 1px solid var(--line);
 }
 
 .problem-item {
-  padding: clamp(24px, 4vw, 42px);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
+  padding: clamp(22px, 3.5vw, 34px) 0 0;
 }
 
 .problem-item p,
@@ -547,8 +568,11 @@ th {
   color: var(--surface);
 }
 
-.builder-panel .signal {
-  color: oklch(0.7 0.04 245);
+.builder-intro {
+  max-width: 58ch;
+  margin: 22px 0 0;
+  color: oklch(0.84 0.03 245);
+  font-size: clamp(1rem, 1.5vw, 1.14rem);
 }
 
 .builder-features {
@@ -611,6 +635,10 @@ input {
   padding: 0 16px;
   color: var(--ink);
   background: var(--surface);
+}
+
+input:focus {
+  border-color: var(--accent);
 }
 
 input::placeholder {
@@ -741,6 +769,10 @@ input::placeholder {
   .problem-list,
   .decision-strip {
     grid-template-columns: 1fr;
+  }
+
+  .problem-item + .problem-item {
+    border-top: 1px solid var(--line);
   }
 }
 

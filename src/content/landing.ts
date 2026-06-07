@@ -134,7 +134,16 @@ export const auditRows = [
 ];
 
 export const builderPoints = [
-  "Built for Stellar payment flows, including native XLM.",
-  "Designed for x402 and MPP-style agent payment patterns.",
-  "Integration surfaces can include a TypeScript client and a policy-aware relayer.",
+  {
+    label: "Stellar flow",
+    body: "Built for Stellar payment flows, including native XLM.",
+  },
+  {
+    label: "Agent pattern",
+    body: "Designed for x402 and MPP-style agent payment patterns.",
+  },
+  {
+    label: "Integration path",
+    body: "Surfaces can include a TypeScript client and a policy-aware relayer.",
+  },
 ];

@@ -203,6 +203,7 @@ input {
   margin: 0;
   color: var(--ink-soft);
   font-size: clamp(1rem, 1.5vw, 1.14rem);
+  align-self: end;
 }
 
 h1,
@@ -258,6 +259,7 @@ h3 {
   align-items: center;
   gap: 14px;
   min-height: 520px;
+  animation: hero-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 .gateway-visual::before {
@@ -340,13 +342,6 @@ h3 {
   align-items: end;
   gap: 30px;
   margin-bottom: 34px;
-}
-
-.section-copy {
-  max-width: 52ch;
-  margin: 0;
-  color: var(--ink-soft);
-  align-self: end;
 }
 
 .problem-list {
@@ -771,10 +766,6 @@ input::placeholder {
 
 .hero-copy {
   animation: hero-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.gateway-visual {
-  animation: hero-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 /* Scroll reveals — progressive enhancement */

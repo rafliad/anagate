@@ -34,6 +34,24 @@ export const problems = [
   },
 ];
 
+export const failurePatterns = [
+  {
+    title: "Compromised authority still looks valid",
+    body:
+      "If a key, session, or agent credential is abused, the payment can still look technically legitimate unless policy checks challenge the request before signing.",
+  },
+  {
+    title: "Language can become payment intent",
+    body:
+      "A manipulated prompt, tool output, or workflow instruction can become a structured transfer request when nothing verifies the intent between the agent and the wallet.",
+  },
+  {
+    title: "Late observability cannot stop a signature",
+    body:
+      "Dashboards can explain a bad payment after it lands. The safer control point is the moment before a relayer receives something signable.",
+  },
+];
+
 export const flowSteps = [
   {
     label: "agent intent",

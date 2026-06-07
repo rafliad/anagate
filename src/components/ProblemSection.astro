@@ -1,5 +1,5 @@
 ---
-import { problems } from "../content/landing";
+import { failurePatterns, problems } from "../content/landing";
 ---
 
 <section class="problem section-shell" aria-labelledby="problem-title">
@@ -17,5 +17,16 @@ import { problems } from "../content/landing";
         <p>{item.body}</p>
       </article>
     ))}
+  </div>
+  <div class="pattern-block" data-reveal style="--reveal-delay: 0.25s" aria-label="Failure patterns without a policy gate">
+    <p class="pattern-kicker">What goes wrong without a gate</p>
+    <div class="pattern-list">
+      {failurePatterns.map((pattern) => (
+        <article class="pattern-item">
+          <h3>{pattern.title}</h3>
+          <p>{pattern.body}</p>
+        </article>
+      ))}
+    </div>
   </div>
 </section>

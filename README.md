@@ -79,10 +79,3 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 ├── PRODUCT.md           # Product philosophy, design goals, and guidelines
 └── package.json         # Project dependencies and script scripts
 ```
-
-## Deployment
-
-This project is configured to deploy on Vercel with the following specifications:
-
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
